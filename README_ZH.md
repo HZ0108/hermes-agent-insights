@@ -44,7 +44,7 @@ Hermes Agent 的上下文管理方案采用了**分层解耦**的设计思路，
 - **消息格式适配层（`anthropic_adapter.py`）：** OpenAI ↔ Anthropic 格式双向转换，严格角色交替强制执行，以及 OAuth 兼容性处理（模拟 Claude Code 身份）。
 - **辅助路由层（`auxiliary_client.py`）：** 辅助任务（压缩/LLM 调用）的统一 Provider 解析链——OpenRouter → Nous → Custom → Codex → Anthropic → 直连 API-Key。
 
-📄 **完整报告：** [上下文管理.md](./ZH/上下文管理.md)
+📄 **完整报告：** [上下文管理.pdf](./ZH/上下文管理.pdf)
 
 ---
 
@@ -59,7 +59,7 @@ Hermes Agent 的**意图路由**并非一个独立的模块或 ML 驱动的意�
 - **子代理委托路由（`tools/delegate_tool.py`）：** 支持为子代理配置不同的 Provider/模型/工具集。
 - **Hook 系统（`gateway/hooks.py`）：** 带通配符的事件路由（`"command:*"`），由 `HookRegistry` 支撑，含会话/项目/全局级作用域。
 
-📄 **完整报告：** [意图路由.md](./ZH/意图路由.md)
+📄 **完整报告：** [意图路由.pdf](./ZH/意图路由.pdf)
 
 ---
 
@@ -72,7 +72,7 @@ Hermes Agent 的自进化并非通过修改自身代码实现——而是通过*
 - **RL 训练管道：** 三层解耦架构——轨迹收集（`trajectory.py`）→ 奖励计算（子类 `compute_reward` + `ToolContext`）→ 训练数据压缩（`trajectory_compressor.py`）。第一阶段生成 SFT 数据；第二阶段通过 vLLM 产生含精确 Token 级 logprobs 的真实 RL 训练数据。
 - **反馈信号系统：** 自进化闭环的核心引擎。显式信号（工具调用次数、Token 限制）提供低延迟反馈；隐式信号（LLM 元认知、用户纠正）提供高适应性。核心悖论：谁来验证验证者？
 
-📄 **完整报告：** [自进化机制.md](./ZH/自进化机制.md)
+📄 **完整报告：** [自进化机制.pdf](./ZH/自进化机制.pdf)
 
 ---
 
@@ -88,7 +88,7 @@ Hermes Agent 的自进化并非通过修改自身代码实现——而是通过*
 - **插件系统（`hermes_cli/plugins.py`）：** 三源发现（用户插件、项目插件、pip 包）。`PluginContext` 门面模式。生命周期钩子：`pre/post_tool_call`、`pre/post_llm_call`、`on_session_start/end`。
 - **代码执行沙箱（`tools/code_execution_tool.py`）：** 多后端设计——Docker、Daytona、Modal、SSH、Singularity、本地开发。可用工具通过 `enabled_tools` 参数显式注入（能力空间隔离），而非从全局注册表查询。
 
-📄 **完整报告：** [工具系统.md](./ZH/工具系统.md)
+📄 **完整报告：** [工具系统.pdf](./ZH/工具系统.pdf)
 
 ---
 
@@ -96,11 +96,10 @@ Hermes Agent 的自进化并非通过修改自身代码实现——而是通过*
 
 | # | 主题 | English | 中文 |
 |---|------|---------|------|
-| 1 | 上下文管理 | [Context Management.md](./EN/Context%20Management.md) | [上下文管理.md](./ZH/上下文管理.md) |
-| 2 | 意图路由 | [Intent Routing.md](./EN/Intent%20Routing.md) | [意图路由.md](./ZH/意图路由.md) |
-| 3 | 自进化机制 | [Self-Evolution Mechanism.md](./EN/Self-Evolution%20Mechanism.md) | [自进化机制.md](./ZH/自进化机制.md) |
-| 4 | 工具系统 | [Tool System.md](./EN/Tool%20System.md) | [工具系统.md](./ZH/工具系统.md) |
-| 5 | 记忆系统 | — | [记忆系统.md](./ZH/记忆系统.md) |
+| 1 | 上下文管理 | [Context Management.pdf](./EN/Context%20Management.pdf) | [上下文管理.pdf](./ZH/上下文管理.pdf) |
+| 2 | 意图路由 | [Intent Routing.pdf](./EN/Intent%20Routing.pdf) | [意图路由.pdf](./ZH/意图路由.pdf) |
+| 3 | 自进化机制 | [Self-Evolution Mechanism.pdf](./EN/Self-Evolution%20Mechanism.pdf) | [自进化机制.pdf](./ZH/自进化机制.pdf) |
+| 4 | 工具系统 | [Tool System.pdf](./EN/Tool%20System.pdf) | [工具系统.pdf](./ZH/工具系统.pdf) |
 
 ---
 

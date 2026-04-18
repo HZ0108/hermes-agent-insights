@@ -44,7 +44,7 @@ Hermes Agent's context management system adopts a **layered decoupled** design p
 - **Message Format Adaptation (`anthropic_adapter.py`):** Bidirectional OpenAI ↔ Anthropic format conversion, with strict role alternation enforcement and OAuth compatibility handling (Claude Code masquerading).
 - **Auxiliary Routing (`auxiliary_client.py`):** Unified provider resolution chain for compression/LLM calls — OpenRouter → Nous → Custom → Codex → Anthropic → Direct API-key.
 
-📄 **Full Report:** [EN/Context Management.md](./EN/Context%20Management.md)
+📄 **Full Report:** [Context Management.pdf](./EN/Context%20Management.pdf)
 
 ---
 
@@ -59,7 +59,7 @@ Hermes Agent's **intent routing** is not a standalone module or an ML-driven int
 - **Sub-Agent Delegation Routing (`tools/delegate_tool.py`):** Supports configuring different providers/models/toolsets for sub-agents.
 - **Hook System (`gateway/hooks.py`):** Wildcard event routing (`"command:*"`) backed by a `HookRegistry`, with session/project/global scoping.
 
-📄 **Full Report:** [EN/Intent Routing.md](./EN/Intent%20Routing.md)
+📄 **Full Report:** [Intent Routing.pdf](./EN/Intent%20Routing.pdf)
 
 ---
 
@@ -72,7 +72,7 @@ Hermes Agent's self-evolution is not achieved by modifying its own code — it f
 - **RL Training Pipeline:** Complete three-layer decoupled architecture — trajectory collection (`trajectory.py`) → reward computation (subclass `compute_reward` + `ToolContext`) → training data compression (`trajectory_compressor.py`). Phase 1 generates SFT data; Phase 2 produces true RL training data with exact token-level logprobs via vLLM.
 - **Feedback Signal System:** The core engine of the self-evolution loop. Explicit signals (tool call count, token limit) provide low-latency feedback; implicit signals (LLM self-assessment, user correction) offer high adaptability. The metacognitive dilemma: who verifies the verifier?
 
-📄 **Full Report:** [EN/Self-Evolution Mechanism.md](./EN/Self-Evolution%20Mechanism.md)
+📄 **Full Report:** [Self-Evolution Mechanism.pdf](./EN/Self-Evolution%20Mechanism.pdf)
 
 ---
 
@@ -88,7 +88,7 @@ The Tool System is Hermes Agent's execution backbone, built around a **plugin-ba
 - **Plugin System (`hermes_cli/plugins.py`):** Three-source discovery (user plugins, project plugins, pip packages). `PluginContext` facade pattern. Lifecycle hooks: `pre/post_tool_call`, `pre/post_llm_call`, `on_session_start/end`.
 - **Code Execution Sandbox (`tools/code_execution_tool.py`):** Multi-backend design — Docker, Daytona, Modal, SSH, Singularity, local dev. Available tools are explicitly parameterized (capability space isolation), not queried from global registry.
 
-📄 **Full Report:** [EN/Tool System.md](./EN/Tool%20System.md)
+📄 **Full Report:** [Tool System.pdf](./EN/Tool%20System.pdf)
 
 ---
 
@@ -96,11 +96,10 @@ The Tool System is Hermes Agent's execution backbone, built around a **plugin-ba
 
 | # | Topic | English | 中文 |
 |---|-------|---------|------|
-| 1 | Context Management | [Context Management.md](./EN/Context%20Management.md) | [上下文管理.md](./ZH/上下文管理.md) |
-| 2 | Intent Routing | [Intent Routing.md](./EN/Intent%20Routing.md) | [意图路由.md](./ZH/意图路由.md) |
-| 3 | Self-Evolution Mechanism | [Self-Evolution Mechanism.md](./EN/Self-Evolution%20Mechanism.md) | [自进化机制.md](./ZH/自进化机制.md) |
-| 4 | Tool System | [Tool System.md](./EN/Tool%20System.md) | [工具系统.md](./ZH/工具系统.md) |
-| 5 | Memory System | — | [记忆系统.md](./ZH/记忆系统.md) |
+| 1 | Context Management | [Context Management.pdf](./EN/Context%20Management.pdf) | [上下文管理.pdf](./ZH/上下文管理.pdf) |
+| 2 | Intent Routing | [Intent Routing.pdf](./EN/Intent%20Routing.pdf) | [意图路由.pdf](./ZH/意图路由.pdf) |
+| 3 | Self-Evolution Mechanism | [Self-Evolution Mechanism.pdf](./EN/Self-Evolution%20Mechanism.pdf) | [自进化机制.pdf](./ZH/自进化机制.pdf) |
+| 4 | Tool System | [Tool System.pdf](./EN/Tool%20System.pdf) | [工具系统.pdf](./ZH/工具系统.pdf) |
 
 ---
 
